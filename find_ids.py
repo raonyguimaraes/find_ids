@@ -1,8 +1,15 @@
 from Bio import SeqIO
 
-id_list_file = open('no_uniq_hits_S288c_no_mito_x_probiotics')
-input_fasta = open('orf_trans_all_R64-1-1_20110203.fasta')
-output_fasta = open("output.fasta", "w")
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('-ids', '--ids', help='ids')
+parser.add_argument('-i', '--input', help='fasta input')
+parser.add_argument('-o', '--output', help='fasta output')
+args = parser.parse_args()
+
+id_list_file = open(args.ids)
+input_fasta = open(args.input)
+output_fasta = open(args.output, "w")
 
 id_list = []
 for id in id_list_file:
